@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jarvish AI</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="background"></div>
+
+<div class="container">
+
+    <div class="header">
+        <h1>Jarvish AI</h1>
+        <p>Instant Intelligence. Accelerated Answers.</p>
+    </div>
+
+    <div id="chat-box" class="chat-box"></div>
+
+    <div class="input-area">
+        <input id="message" placeholder="Ask Jarvish anything..." />
+        <button id="sendBtn">➤</button>
+        <button id="micBtn">🎤</button>
+    </div>
+
+</div>
+
+<!-- Voice Mode Overlay -->
+<div id="voiceOverlay" class="voice-overlay">
+    <div class="voice-circle"></div>
+    <p id="voiceStatus">Listening...</p>
+    <button onclick="exitVoice()">Exit</button>
+</div>
+
+<script src="/static/script.js"></script>
+
+</body>
+</html>
