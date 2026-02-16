@@ -1,18 +1,28 @@
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
+from fastapi import FastAPI
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from groq import Groq
 import os
+import mimetypes  
 from dotenv import load_dotenv
 from typing import Optional
+
+mimetypes.add_type("text/css", ".css")
+mimetypes.add_type("application/javascript", ".js")
 
 if os.getenv("ENV") != "production":
     load_dotenv()
 
 app = FastAPI()
 
-app.mount("/static", StaticFiles(directory="static"), name="static")
+script_dir = os.path.dirname(__file__)
+static_path = os.path.join(script_dir, "static")
+
+app.mount("/static", StaticFiles(directory=static_path), name="static")
 
 client = Groq(api_key=os.getenv("GROQ_API_KEY"))
 
